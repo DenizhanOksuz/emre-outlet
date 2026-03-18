@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koleksiyonlar | Emre Outlet</title>
+  <meta name="description" content="Erkek ve Kadın koleksiyonlarını keşfedin. Calvin Klein, Mavi, Tommy Hilfiger ve daha fazlası outlet fiyatına." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <style>
+    .product-card-img { position:relative; aspect-ratio:4/5; overflow:hidden; }
+    .product-card-img img { width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:brightness(.7) saturate(.8); }
+    .product-card:hover .product-card-img img { transform:scale(1.05);filter:brightness(.6) saturate(.7); }
+    .product-card-badges { position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:6px; }
+    .product-quick-wa { position:absolute;bottom:14px;left:14px;right:14px;padding:12px;background:rgba(10,10,15,.9);backdrop-filter:blur(8px);border:1px solid rgba(37,211,102,.4);border-radius:2px;font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.1em;color:#25D366;text-align:center;opacity:0;transform:translateY(8px);transition:all .35s ease;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none; }
+    .product-card:hover .product-quick-wa { opacity:1;transform:translateY(0); }
+    .product-card-body { padding:18px 18px 22px; }
+    .product-brand { font-family:var(--font-sans);font-size:9px;font-weight:700;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:7px; }
+    .product-name { font-size:14px;color:var(--white);margin-bottom:12px;line-height:1.4; }
+    .product-price { font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--gold); }
+    .product-card { background:var(--card-bg);border:1px solid transparent;border-radius:3px;overflow:hidden;cursor:pointer;transition:var(--transition); }
+    .product-card:hover { transform:translateY(-10px);border-color:rgba(201,168,76,.35);box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  </style>
+</head>
+<body class="page-transition">
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-emblem">E</div>
+      <div class="logo-text">
+        <span class="logo-brand">EMRE OUTLET</span>
+        <span class="logo-sub">Osmaniye • Türkiye</span>
+      </div>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Anasayfa</a></li>
+      <li><a href="koleksiyonlar.html" class="active">Koleksiyonlar</a></li>
+      <li><a href="hakkimizda.html">Hakkımızda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+    <div class="navbar-right">
+      <a href="https://wa.me/905454243276?text=Merhaba%2C%20Emre%20Outlet%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-whatsapp-nav" id="nav-wa-btn">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
+        WhatsApp
+      </a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Anasayfa</a>
+    <a href="koleksiyonlar.html">Koleksiyonlar</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="https://wa.me/905454243276" target="_blank" style="color:#25D366">WhatsApp →</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container reveal">
+      <div class="page-hero-eyebrow">Tüm Koleksiyonlar</div>
+      <h1>Yeni Sezon <em>Koleksiyonu</em></h1>
+      <p>Calvin Klein'dan Diesel'e, Mavi'den Tommy Hilfiger'a — ünlü markalar outlet fiyatına.</p>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" id="filter-bar">
+    <div class="filter-bar-inner">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="tumü" id="filter-tumu">Tümü</button>
+        <button class="filter-btn" data-filter="erkek" id="filter-erkek">Erkek</button>
+        <button class="filter-btn" data-filter="kadin" id="filter-kadin">Kadın</button>
+      </div>
+      <div class="filter-group">
+        <select class="filter-select" id="filter-marka">
+          <option value="">Marka (Tümü)</option>
+          <option value="calvin-klein">Calvin Klein</option>
+          <option value="mavi">Mavi</option>
+          <option value="tommy">Tommy Hilfiger</option>
+          <option value="diesel">Diesel</option>
+          <option value="uspolo">U.S. Polo Assn.</option>
+          <option value="lufian">Lufian</option>
+          <option value="columbia">Columbia</option>
+        </select>
+        <select class="filter-select" id="filter-kategori" style="margin-left:12px">
+          <option value="">Kategori (Tümü)</option>
+          <option value="tshirt">T-Shirt & Polo</option>
+          <option value="gomlek">Gömlek</option>
+          <option value="pantolon">Pantolon & Jean</option>
+          <option value="sweatshirt">Sweatshirt & Hoodie</option>
+          <option value="dis">Dış Giyim</option>
+          <option value="elbise">Elbise & Etek</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn" data-filter="yeni" id="filter-yeni">✦ Yeni Sezon</button>
+        <button class="filter-btn" data-filter="outlet" id="filter-outlet">Outlet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section class="section koleksiyon-section" id="koleksiyonlar-listesi">
+    <div class="container">
+      <p class="products-count reveal">Toplam <span id="product-count">12</span> ürün gösteriliyor</p>
+      <div class="koleksiyon-grid" id="products-grid">
+
+        <!-- Ürünler JS tarafından localStorage'dan yüklenir -->
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo" style="margin-bottom:16px">
+          <div class="logo-emblem" style="width:44px;height:44px;font-size:20px">E</div>
+          <div class="logo-text"><span class="logo-brand">EMRE OUTLET</span><span class="logo-sub">Osmaniye • Türkiye</span></div>
+        </a>
+        <p>En ünlü markalar outlet fiyatına. 2 şube ile hizmetinizdeyiz.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/emreoutlet.osmaniye" target="_blank" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/905454243276" target="_blank" class="social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-title">Sayfalar</p>
+        <div class="footer-links">
+          <a href="index.html">Anasayfa</a>
+          <a href="koleksiyonlar.html">Koleksiyonlar</a>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="iletisim.html">İletişim</a>
+        </div>
+      </div>
+      <div class="footer-contact" style="grid-column:span 2">
+        <p class="footer-title">İletişim</p>
+        <p><span>📍</span> Fakıuşağı Mah., Osmaniye Merkez</p>
+        <p><span>📍</span> Dr. Sadık Ahmet Cd. altı, 80010 Osmaniye</p>
+        <p><span>📞</span> <a href="tel:+905454243276" style="color:var(--gold)">0545 424 32 76</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Emre Outlet. Tüm hakları saklıdır.</span>
+      <span>Osmaniye, Türkiye</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/905454243276?text=Merhaba%2C%20Emre%20Outlet%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float" id="wa-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
+  </a>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // ── Filtre Durumu ──────────────────────
+    const state = { gender: '', tip: '', marka: '', kategori: '' };
+    const countEl = document.getElementById('product-count');
+    const noResult = document.getElementById('no-result');
+
+    // 1. localStorage'dan tüm ürünleri yükle (varsayılanları da init eder)
+    eoRenderGrid('products-grid', 'product-count');
+
+    // 2. Oluşturulan kartları seç (hem varsayılan hem admin eklentileri)
+    let allCards = document.querySelectorAll('#products-grid [data-cinsiyet]');
+
+    function applyFilter() {
+      let count = 0;
+      allCards.forEach(c => {
+        const gMatch   = !state.gender   || c.dataset.cinsiyet === state.gender;
+        const tMatch   = !state.tip      || c.dataset.tip      === state.tip;
+        const mMatch   = !state.marka    || c.dataset.marka    === state.marka;
+        const katMatch = !state.kategori || c.dataset.kategori === state.kategori;
+        const show     = gMatch && tMatch && mMatch && katMatch;
+        c.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      countEl.textContent = count;
+      if (noResult) noResult.style.display = count === 0 ? 'block' : 'none';
+    }
+
+    // Cinsiyet butonları
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        if (f === 'tumü' || f === 'erkek' || f === 'kadin') {
+          document.querySelectorAll('[data-filter="tumü"],[data-filter="erkek"],[data-filter="kadin"]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.gender = f === 'tumü' ? '' : f;
+        } else {
+          const isActive = btn.classList.toggle('active');
+          document.querySelectorAll('[data-filter="yeni"],[data-filter="outlet"]').forEach(b => { if (b !== btn) b.classList.remove('active'); });
+          state.tip = isActive ? f : '';
+        }
+        applyFilter();
+      });
+    });
+
+    // Marka dropdown
+    document.getElementById('filter-marka').addEventListener('change', function() {
+      state.marka = this.value; applyFilter();
+    });
+
+    // Kategori dropdown
+    document.getElementById('filter-kategori').addEventListener('change', function() {
+      state.kategori = this.value; applyFilter();
+    });
+  </script>
+</body>
+</html>

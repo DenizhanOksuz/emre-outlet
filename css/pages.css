@@ -1,0 +1,636 @@
+/* =================================================
+   EMRE OUTLET — pages.css (Alt Sayfalar)
+   ================================================= */
+
+/* ── Page Hero (Alt sayfalar için) ── */
+.page-hero {
+  padding: 120px 48px 72px;
+  background: var(--gradient-bg);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.page-hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.page-hero p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 540px;
+  line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────
+   KOLEKSIYONLAR PAGE
+───────────────────────────────────────── */
+.filter-bar {
+  background: var(--navy);
+  border-bottom: 1px solid var(--border-gold);
+  padding: 0 48px;
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+}
+
+.filter-bar-inner {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-right: 1px solid var(--border-gold);
+  padding-right: 24px;
+  margin-right: 24px;
+}
+
+.filter-group:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.filter-btn {
+  padding: 20px 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition);
+  background: none;
+  border: none;
+  margin: 0 10px;
+}
+
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  color: var(--gold);
+}
+
+.filter-btn.active::after,
+.filter-btn:hover::after {
+  width: 100%;
+}
+
+.filter-select {
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 8px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+  margin: 16px 0;
+}
+
+.filter-select:hover, .filter-select:focus {
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.filter-select option {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* Product Grid (Koleksiyonlar) */
+.koleksiyon-section {
+  background: var(--black);
+  min-height: 60vh;
+}
+
+.products-count {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+}
+
+.products-count span { color: var(--gold); font-weight: 600; }
+
+.koleksiyon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card-hidden { display: none; }
+
+/* Category Titles */
+.category-section-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.category-section-title span {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────
+   HAKKIMIZDA PAGE
+───────────────────────────────────────── */
+.story-section {
+  background: var(--black);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-image {
+  position: relative;
+  height: 580px;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+  filter: brightness(0.75) saturate(0.8);
+}
+
+.story-image::before {
+  content: '';
+  position: absolute;
+  top: -16px; left: -16px;
+  right: 16px; bottom: 16px;
+  border: 1px solid var(--border-gold);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.story-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 120px; height: 120px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.story-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--black);
+  padding: 16px 20px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.story-badge-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.story-badge-label {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.story-text blockquote {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.7;
+  border-left: 2px solid var(--gold);
+  padding-left: 24px;
+  margin: 28px 0;
+}
+
+.story-text p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+/* Counters */
+.counters-section {
+  background: var(--navy);
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.counters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-gold);
+  border: 1px solid var(--border-gold);
+}
+
+.counter-item {
+  background: var(--navy);
+  padding: 52px 40px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.counter-item:hover {
+  background: rgba(201, 168, 76, 0.04);
+}
+
+.counter-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.counter-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Brands wall */
+.brands-section {
+  background: var(--black);
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-gold);
+  border: 1px solid var(--border-gold);
+  margin-top: 56px;
+}
+
+.brand-cell {
+  background: var(--black);
+  padding: 36px 24px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  transition: var(--transition);
+  cursor: default;
+}
+
+.brand-cell:hover {
+  background: rgba(201, 168, 76, 0.05);
+  color: var(--gold);
+}
+
+/* ─────────────────────────────────────────
+   İLETİŞİM PAGE
+───────────────────────────────────────── */
+.contact-section {
+  background: var(--black);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 72px;
+}
+
+.branch-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  padding: 44px 40px;
+  border-radius: 2px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.branch-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.branch-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+
+.branch-card:hover::before { transform: scaleX(1); }
+
+.branch-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(201, 168, 76, 0.08);
+  position: absolute;
+  top: 20px; right: 24px;
+  line-height: 1;
+}
+
+.branch-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border: 1px solid var(--border-gold);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.branch-card h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.branch-info p {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.branch-info .bi-icon {
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.branch-info a { color: inherit; transition: var(--transition); }
+.branch-info a:hover { color: var(--gold); }
+
+.branch-note {
+  font-size: 12px;
+  color: rgba(154, 154, 138, 0.6) !important;
+  font-style: italic;
+}
+
+.branch-map-btn {
+  margin-top: 24px;
+}
+
+/* Contact Form & Map */
+.contact-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.contact-form-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  padding: 44px 40px;
+  border-radius: 2px;
+}
+
+.form-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-gold);
+  padding: 14px 16px;
+  color: var(--white);
+  font-size: 14px;
+  border-radius: 2px;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.contact-map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.map-embed-wrap {
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  height: 340px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+.map-icon { font-size: 40px; }
+
+.map-placeholder p {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.map-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Responsive Pages ── */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; gap: 48px; }
+  .story-image { height: 420px; }
+  .koleksiyon-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-bottom { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding: 100px 24px 48px; }
+  .filter-bar { padding: 0 20px; top: 68px; }
+  .filter-bar-inner { flex-wrap: nowrap; overflow-x: auto; gap: 4px; }
+  .filter-group { flex-wrap: nowrap; border-right: none; padding-right: 0; margin-right: 8px; }
+  .koleksiyon-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .counters-grid { grid-template-columns: 1fr; }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 28px 24px; }
+  .branch-card { padding: 32px 24px; }
+}
+
+@media (max-width: 480px) {
+  .koleksiyon-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+}
