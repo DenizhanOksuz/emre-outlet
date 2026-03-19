@@ -11,6 +11,10 @@
   <meta property="og:image" content="images/hero_bg.png" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/home.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body class="page-transition">
 
@@ -165,80 +169,8 @@
         </div>
         <a href="koleksiyonlar.html" class="btn btn-outline" id="tum-koleksiyon-btn">Tüm Koleksiyonu Gör</a>
       </div>
-      <div class="products-grid">
-
-        <div class="product-card reveal reveal-delay-1">
-          <div class="product-card-img">
-            <img src="images/erkek_koleksiyon.png" alt="Calvin Klein Slim Fit Jean" loading="lazy" />
-            <div class="product-card-badges">
-              <span class="badge badge-gold">Yeni</span>
-            </div>
-            <a href="https://wa.me/905454243276?text=Merhaba%2C%20Calvin%20Klein%20Slim%20Fit%20Jean%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="product-quick-wa" id="prod-wa-1">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
-              WhatsApp ile Sor
-            </a>
-          </div>
-          <div class="product-card-body">
-            <div class="product-brand">Calvin Klein</div>
-            <div class="product-name">Slim Fit Koyu İndigo Jean</div>
-            <div><span class="product-price">Fiyat İçin Yazın</span></div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-2">
-          <div class="product-card-img">
-            <img src="images/kadin_koleksiyon.png" alt="Mavi Kadın Blazer Ceket" loading="lazy" />
-            <div class="product-card-badges">
-              <span class="badge badge-red">Outlet</span>
-            </div>
-            <a href="https://wa.me/905454243276?text=Merhaba%2C%20Mavi%20Kadın%20Blazer%20Ceket%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="product-quick-wa" id="prod-wa-2">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
-              WhatsApp ile Sor
-            </a>
-          </div>
-          <div class="product-card-body">
-            <div class="product-brand">Mavi</div>
-            <div class="product-name">Kadın Oversize Blazer Ceket</div>
-            <div><span class="product-price">Fiyat İçin Yazın</span></div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-3">
-          <div class="product-card-img">
-            <img src="images/erkek_koleksiyon.png" alt="Tommy Hilfiger Polo" loading="lazy" />
-            <div class="product-card-badges">
-              <span class="badge badge-gold">Yeni</span>
-            </div>
-            <a href="https://wa.me/905454243276?text=Merhaba%2C%20Tommy%20Hilfiger%20Polo%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="product-quick-wa" id="prod-wa-3">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
-              WhatsApp ile Sor
-            </a>
-          </div>
-          <div class="product-card-body">
-            <div class="product-brand">Tommy Hilfiger</div>
-            <div class="product-name">Slim Fit Polo T-Shirt</div>
-            <div><span class="product-price">Fiyat İçin Yazın</span></div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-4">
-          <div class="product-card-img">
-            <img src="images/kadin_koleksiyon.png" alt="Diesel Pamuklu Elbise" loading="lazy" />
-            <div class="product-card-badges">
-              <span class="badge badge-red">Outlet</span>
-            </div>
-            <a href="https://wa.me/905454243276?text=Merhaba%2C%20Diesel%20Elbise%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="product-quick-wa" id="prod-wa-4">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
-              WhatsApp ile Sor
-            </a>
-          </div>
-          <div class="product-card-body">
-            <div class="product-brand">Diesel</div>
-            <div class="product-name">Kadın Pamuklu Midi Elbise</div>
-            <div><span class="product-price">Fiyat İçin Yazın</span></div>
-          </div>
-        </div>
-
+      <div class="products-grid" id="featured-products-grid">
+        <!-- Firestore'dan dinamik olarak yüklenecek -->
       </div>
     </div>
   </section>
@@ -389,6 +321,14 @@
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.527 5.845L.057 23.5l5.793-1.47A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.015-1.379l-.36-.213-3.43.87.897-3.338-.235-.374A9.818 9.818 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182c5.424 0 9.818 4.393 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818z"/></svg>
   </a>
 
+  <script src="js/products-data.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    // Sayfa yüklenince öne çıkanları getir
+    window.addEventListener('DOMContentLoaded', () => {
+      eoRenderSpotlight('featured-products-grid');
+    });
+  </script>
 </body>
 </html>

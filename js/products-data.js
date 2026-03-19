@@ -1,21 +1,19 @@
 /* =================================================
    EMRE OUTLET — products-data.js
-   Varsayılan ürünler. localStorage boşsa bunlar
-   otomatik olarak yüklenir.
+   Varsayılan ürün listesi & WhatsApp numarası.
+   Tüm okuma/yazma işlemleri firebase-config.js'te.
    ================================================= */
 
-const EO_PRODUCTS_KEY = 'eo_products';
-const EO_ID_KEY = 'eo_id_seq';
 const WA_NUM = '905454243276';
 
 const DEFAULT_PRODUCTS = [
   // ERKEK
-  { id:1, name:'Slim Fit Koyu İndigo Jean',    marka:'calvin-klein', markaLabel:'Calvin Klein',    cinsiyet:'erkek', kategori:'pantolon',  tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
-  { id:2, name:'Slim Fit Polo T-Shirt',        marka:'tommy',        markaLabel:'Tommy Hilfiger',  cinsiyet:'erkek', kategori:'tshirt',    tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
-  { id:3, name:'Erkek Slim Jean',              marka:'mavi',         markaLabel:'Mavi',            cinsiyet:'erkek', kategori:'pantolon',  tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
-  { id:4, name:'Regular Fit Oxford Gömlek',   marka:'uspolo',       markaLabel:'U.S. Polo Assn.', cinsiyet:'erkek', kategori:'gomlek',    tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
-  { id:5, name:'Premium Sweatshirt',          marka:'lufian',       markaLabel:'Lufian',          cinsiyet:'erkek', kategori:'sweatshirt',tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
-  { id:6, name:'Outdoor Mont',                marka:'columbia',     markaLabel:'Columbia',        cinsiyet:'erkek', kategori:'dis',       tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:1,  name:'Slim Fit Koyu İndigo Jean',   marka:'calvin-klein', markaLabel:'Calvin Klein',    cinsiyet:'erkek', kategori:'pantolon',  tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:2,  name:'Slim Fit Polo T-Shirt',       marka:'tommy',        markaLabel:'Tommy Hilfiger',  cinsiyet:'erkek', kategori:'tshirt',    tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:3,  name:'Erkek Slim Jean',             marka:'mavi',         markaLabel:'Mavi',            cinsiyet:'erkek', kategori:'pantolon',  tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:4,  name:'Regular Fit Oxford Gömlek',  marka:'uspolo',       markaLabel:'U.S. Polo Assn.', cinsiyet:'erkek', kategori:'gomlek',    tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:5,  name:'Premium Sweatshirt',         marka:'lufian',       markaLabel:'Lufian',          cinsiyet:'erkek', kategori:'sweatshirt',tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
+  { id:6,  name:'Outdoor Mont',               marka:'columbia',     markaLabel:'Columbia',        cinsiyet:'erkek', kategori:'dis',       tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/erkek_koleksiyon.png' },
   // KADIN
   { id:7,  name:'Oversize Blazer Ceket',      marka:'mavi',         markaLabel:'Mavi',            cinsiyet:'kadin', kategori:'dis',       tip:'yeni',   fiyat:'Fiyat İçin Yazın', imgPath:'images/kadin_koleksiyon.png' },
   { id:8,  name:'Midi Pamuklu Elbise',        marka:'diesel',       markaLabel:'Diesel',          cinsiyet:'kadin', kategori:'elbise',    tip:'outlet', fiyat:'Fiyat İçin Yazın', imgPath:'images/kadin_koleksiyon.png' },

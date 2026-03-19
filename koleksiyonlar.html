@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Koleksiyonlar | Emre Outlet</title>
   <meta name="description" content="Erkek ve Kadın koleksiyonlarını keşfedin. Calvin Klein, Mavi, Tommy Hilfiger ve daha fazlası outlet fiyatına." />
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/pages.css" />
   <style>
@@ -154,18 +159,22 @@
   </a>
 
   <script src="js/products-data.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/main.js"></script>
   <script>
     // ── Filtre Durumu ──────────────────────
     const state = { gender: '', tip: '', marka: '', kategori: '' };
     const countEl = document.getElementById('product-count');
     const noResult = document.getElementById('no-result');
+    let allCards = [];
 
-    // 1. localStorage'dan tüm ürünleri yükle (varsayılanları da init eder)
-    eoRenderGrid('products-grid', 'product-count');
-
-    // 2. Oluşturulan kartları seç (hem varsayılan hem admin eklentileri)
-    let allCards = document.querySelectorAll('#products-grid [data-cinsiyet]');
+    // Firestore'dan ürünleri yükle ve grid'i oluştur
+    async function initKoleksiyonlar() {
+      await eoRenderGrid('products-grid', 'product-count');
+      // Grid oluştuktan sonra kartları seç ve state'i uygula
+      allCards = document.querySelectorAll('#products-grid [data-cinsiyet]');
+      applyFilter();
+    }
 
     function applyFilter() {
       let count = 0;
@@ -178,7 +187,7 @@
         c.style.display = show ? '' : 'none';
         if (show) count++;
       });
-      countEl.textContent = count;
+      if (countEl) countEl.textContent = count;
       if (noResult) noResult.style.display = count === 0 ? 'block' : 'none';
     }
 
@@ -208,6 +217,9 @@
     document.getElementById('filter-kategori').addEventListener('change', function() {
       state.kategori = this.value; applyFilter();
     });
+
+    // Sayfa yüklenince başlat
+    initKoleksiyonlar();
   </script>
 </body>
 </html>
