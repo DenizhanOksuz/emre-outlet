@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel | Emre Outlet</title>
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -10,408 +11,454 @@
   <!-- Emre Outlet veri katmanı -->
   <script src="js/products-data.js"></script>
   <script src="js/firebase-config.js"></script>
-  <link rel="stylesheet" href="css/admin.css"/>
+  <link rel="stylesheet" href="css/admin.css" />
 </head>
+
 <body>
 
-<!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
      GİRİŞ EKRANI
 ══════════════════════════════════════════ -->
-<div id="login-screen">
-  <div class="login-box">
-    <div class="login-logo">
-      <div class="login-logo-emblem">E</div>
-      <div class="login-logo-text">
-        <span class="login-brand">EMRE OUTLET</span>
-        <span class="login-sub">Yönetim Paneli</span>
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="login-logo-emblem">E</div>
+        <div class="login-logo-text">
+          <span class="login-brand">EMRE OUTLET</span>
+          <span class="login-sub">Yönetim Paneli</span>
+        </div>
       </div>
-    </div>
-    <p class="login-title">Giriş Yapın</p>
-    <div class="login-error" id="login-error">❌ Kullanıcı adı veya şifre hatalı.</div>
-    <div class="form-field">
-      <label for="input-username">Kullanıcı Adı</label>
-      <input type="text" id="input-username" placeholder="kullanıcı adı" autocomplete="username"/>
-    </div>
-    <div class="form-field">
-      <label for="input-password">Şifre</label>
-      <input type="password" id="input-password" placeholder="••••••••" autocomplete="current-password"/>
-    </div>
-    <button class="btn btn-primary btn-full" id="login-btn" style="margin-top:8px;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-      Giriş Yap
-    </button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     ADMIN PANELİ
-══════════════════════════════════════════ -->
-<div id="admin-panel">
-
-  <!-- Sidebar -->
-  <aside class="admin-sidebar">
-    <div class="sidebar-logo">
-      <div class="sidebar-logo-emblem">E</div>
-      <div class="sidebar-logo-text">
-        <div class="logo-brand">EMRE OUTLET</div>
-        <div class="logo-sub">Admin</div>
+      <p class="login-title">Giriş Yapın</p>
+      <div class="login-error" id="login-error">❌ Kullanıcı adı veya şifre hatalı.</div>
+      <div class="form-field">
+        <label for="input-username">Kullanıcı Adı</label>
+        <input type="text" id="input-username" placeholder="kullanıcı adı" autocomplete="username" />
       </div>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="nav-item active" data-section="dashboard" id="nav-dashboard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        <span>Dashboard</span>
+      <div class="form-field">
+        <label for="input-password">Şifre</label>
+        <input type="password" id="input-password" placeholder="••••••••" autocomplete="current-password" />
       </div>
-      <div class="nav-item" data-section="urunler" id="nav-urunler">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span>Ürünler</span>
-      </div>
-      <div class="nav-item" data-section="ayarlar" id="nav-ayarlar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M16.24 7.76A6 6 0 0112 6a6 6 0 00-4.24 1.76A6 6 0 006 12a6 6 0 001.76 4.24l1.41 1.41M21 12h-2M5 12H3M12 21v-2M12 5V3"/></svg>
-        <span>Ayarlar</span>
-      </div>
-    </nav>
-    <div class="sidebar-footer">
-      <button class="btn btn-outline btn-sm btn-full" id="logout-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        <span>Çıkış</span>
+      <button class="btn btn-primary btn-full" id="login-btn" style="margin-top:8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" y1="12" x2="3" y2="12" />
+        </svg>
+        Giriş Yap
       </button>
     </div>
-  </aside>
+  </div>
 
-  <!-- Main Content -->
-  <main class="admin-content">
+  <!-- ══════════════════════════════════════════
+     ADMIN PANELİ
+══════════════════════════════════════════ -->
+  <div id="admin-panel">
 
-    <!-- DASHBOARD -->
-    <section class="admin-section active" id="section-dashboard">
-      <div class="top-bar">
-        <h1 class="page-title">Genel <span>Bakış</span></h1>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Toplam Ürün</div>
-          <div class="stat-num" id="stat-toplam">0</div>
-          <div class="stat-sub">Koleksiyonlarda yayınlanan</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Erkek Ürün</div>
-          <div class="stat-num" id="stat-erkek">0</div>
-          <div class="stat-sub">Erkek koleksiyonu</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Kadın Ürün</div>
-          <div class="stat-num" id="stat-kadin">0</div>
-          <div class="stat-sub">Kadın koleksiyonu</div>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-emblem">E</div>
+        <div class="sidebar-logo-text">
+          <div class="logo-brand">EMRE OUTLET</div>
+          <div class="logo-sub">Admin</div>
         </div>
       </div>
-      <div class="section-header">
-        <h2>Son Eklenen Ürünler</h2>
-        <button class="btn btn-primary btn-sm" id="dashboard-add-btn">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Yeni Ürün Ekle
+      <nav class="sidebar-nav">
+        <div class="nav-item active" data-section="dashboard" id="nav-dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          <span>Dashboard</span>
+        </div>
+        <div class="nav-item" data-section="urunler" id="nav-urunler">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          <span>Ürünler</span>
+        </div>
+        <div class="nav-item" data-section="ayarlar" id="nav-ayarlar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.07 4.93l-1.41 1.41M16.24 7.76A6 6 0 0112 6a6 6 0 00-4.24 1.76A6 6 0 006 12a6 6 0 001.76 4.24l1.41 1.41M21 12h-2M5 12H3M12 21v-2M12 5V3" />
+          </svg>
+          <span>Ayarlar</span>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm btn-full" id="logout-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          <span>Çıkış</span>
         </button>
       </div>
-      <div id="dashboard-recent"></div>
-    </section>
+    </aside>
 
-    <!-- ÜRÜNLER -->
-    <section class="admin-section" id="section-urunler">
-      <div class="top-bar">
-        <h1 class="page-title">Ürün <span>Yönetimi</span></h1>
-        <button class="btn btn-primary" id="urunler-add-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Yeni Ürün Ekle
-        </button>
-      </div>
-      <div id="products-table-wrap"></div>
-    </section>
+    <!-- Main Content -->
+    <main class="admin-content">
 
-    <!-- AYARLAR -->
-    <section class="admin-section" id="section-ayarlar">
-      <div class="top-bar">
-        <h1 class="page-title">Panel <span>Ayarları</span></h1>
-      </div>
-      <div class="settings-grid">
-        <div class="settings-card">
-          <h3>Şifre Değiştir</h3>
-          <div class="form-field">
-            <label>Mevcut Şifre</label>
-            <input type="password" id="cur-pass" placeholder="Mevcut şifreniz"/>
-          </div>
-          <div class="form-field">
-            <label>Yeni Şifre</label>
-            <input type="password" id="new-pass" placeholder="Yeni şifre"/>
-          </div>
-          <div class="form-field">
-            <label>Yeni Şifre (Tekrar)</label>
-            <input type="password" id="new-pass2" placeholder="Yeni şifre tekrar"/>
-          </div>
-          <button class="btn btn-primary btn-sm" id="change-pass-btn">Şifreyi Güncelle</button>
+      <!-- DASHBOARD -->
+      <section class="admin-section active" id="section-dashboard">
+        <div class="top-bar">
+          <h1 class="page-title">Genel <span>Bakış</span></h1>
         </div>
-        <div class="settings-card">
-          <h3>Veri Yönetimi</h3>
-          <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7;">Tüm ürün verilerini dışa aktarabilir (JSON) veya içe aktarabilirsiniz. Sitenin başka bir bilgisayarda da çalışması için kullanın.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <button class="btn btn-outline btn-sm" id="export-btn">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Ürünleri Dışa Aktar (JSON)
-            </button>
-            <label class="btn btn-outline btn-sm" style="justify-content:center;cursor:pointer;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Ürünleri İçe Aktar (JSON)
-              <input type="file" id="import-input" accept=".json" style="display:none"/>
-            </label>
-            <button class="btn btn-danger btn-sm" id="clear-btn">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-              Tüm Ürünleri Sil
-            </button>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Toplam Ürün</div>
+            <div class="stat-num" id="stat-toplam">0</div>
+            <div class="stat-sub">Koleksiyonlarda yayınlanan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Erkek Ürün</div>
+            <div class="stat-num" id="stat-erkek">0</div>
+            <div class="stat-sub">Erkek koleksiyonu</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Kadın Ürün</div>
+            <div class="stat-num" id="stat-kadin">0</div>
+            <div class="stat-sub">Kadın koleksiyonu</div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="section-header">
+          <h2>Son Eklenen Ürünler</h2>
+          <button class="btn btn-primary btn-sm" id="dashboard-add-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Yeni Ürün Ekle
+          </button>
+        </div>
+        <div id="dashboard-recent"></div>
+      </section>
 
-  </main>
-</div>
+      <!-- ÜRÜNLER -->
+      <section class="admin-section" id="section-urunler">
+        <div class="top-bar">
+          <h1 class="page-title">Ürün <span>Yönetimi</span></h1>
+          <button class="btn btn-primary" id="urunler-add-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Yeni Ürün Ekle
+          </button>
+        </div>
+        <div id="products-table-wrap"></div>
+      </section>
 
-<!-- ══════════════════════════════════════════
+      <!-- AYARLAR -->
+      <section class="admin-section" id="section-ayarlar">
+        <div class="top-bar">
+          <h1 class="page-title">Panel <span>Ayarları</span></h1>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Şifre Değiştir</h3>
+            <div class="form-field">
+              <label>Mevcut Şifre</label>
+              <input type="password" id="cur-pass" placeholder="Mevcut şifreniz" />
+            </div>
+            <div class="form-field">
+              <label>Yeni Şifre</label>
+              <input type="password" id="new-pass" placeholder="Yeni şifre" />
+            </div>
+            <div class="form-field">
+              <label>Yeni Şifre (Tekrar)</label>
+              <input type="password" id="new-pass2" placeholder="Yeni şifre tekrar" />
+            </div>
+            <button class="btn btn-primary btn-sm" id="change-pass-btn">Şifreyi Güncelle</button>
+          </div>
+          <div class="settings-card">
+            <h3>Veri Yönetimi</h3>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7;">Tüm ürün verilerini
+              dışa aktarabilir (JSON) veya içe aktarabilirsiniz. Sitenin başka bir bilgisayarda da çalışması için
+              kullanın.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn btn-outline btn-sm" id="export-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Ürünleri Dışa Aktar (JSON)
+              </button>
+              <label class="btn btn-outline btn-sm" style="justify-content:center;cursor:pointer;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                Ürünleri İçe Aktar (JSON)
+                <input type="file" id="import-input" accept=".json" style="display:none" />
+              </label>
+              <button class="btn btn-danger btn-sm" id="clear-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2" />
+                </svg>
+                Tüm Ürünleri Sil
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════
      ÜRÜN EKLE / DÜZENLE MODALİ
 ══════════════════════════════════════════ -->
-<div class="modal-overlay" id="product-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 class="modal-title" id="modal-title">Yeni <span>Ürün</span></h2>
-      <div class="modal-close" id="modal-close">✕</div>
-    </div>
-    <div class="modal-body">
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Yeni <span>Ürün</span></h2>
+        <div class="modal-close" id="modal-close">✕</div>
+      </div>
+      <div class="modal-body">
 
-      <!-- Görsel Yükle -->
-      <div class="form-field">
-        <label>Ürün Görseli</label>
-        <div id="upload-area" class="image-upload-area">
-          <input type="file" id="img-input" accept="image/*"/>
-          <div id="upload-placeholder">
-            <div class="upload-icon">🖼️</div>
-            <div class="upload-title">Görsel yüklemek için tıklayın veya sürükleyin</div>
-            <div class="upload-sub">JPG, PNG, WEBP — Otomatik WebP'ye dönüştürülür</div>
-            <div class="upload-badge">WebP Otomatik Dönüşüm</div>
+        <!-- Görsel Yükle -->
+        <div class="form-field">
+          <label>Ürün Görseli</label>
+          <div id="upload-area" class="image-upload-area">
+            <input type="file" id="img-input" accept="image/*" />
+            <div id="upload-placeholder">
+              <div class="upload-icon">🖼️</div>
+              <div class="upload-title">Görsel yüklemek için tıklayın veya sürükleyin</div>
+              <div class="upload-sub">JPG, PNG, WEBP — Otomatik WebP'ye dönüştürülür</div>
+              <div class="upload-badge">WebP Otomatik Dönüşüm</div>
+            </div>
+            <div id="upload-preview-wrap" style="display:none">
+              <img id="img-preview" class="image-preview" alt="Önizleme" />
+              <div class="image-preview-remove" id="img-remove">✕</div>
+              <div class="image-meta" id="img-meta"></div>
+            </div>
           </div>
-          <div id="upload-preview-wrap" style="display:none">
-            <img id="img-preview" class="image-preview" alt="Önizleme"/>
-            <div class="image-preview-remove" id="img-remove">✕</div>
-            <div class="image-meta" id="img-meta"></div>
+        </div>
+
+        <!-- Ürün Bilgileri -->
+        <div class="form-row">
+          <div class="form-field">
+            <label>Ürün Adı *</label>
+            <input type="text" id="f-name" placeholder="Slim Fit Jean" />
+          </div>
+          <div class="form-field">
+            <label>Marka *</label>
+            <select id="f-marka">
+              <option value="">Seçin...</option>
+              <option value="calvin-klein">Calvin Klein</option>
+              <option value="mavi">Mavi</option>
+              <option value="tommy">Tommy Hilfiger</option>
+              <option value="diesel">Diesel</option>
+              <option value="uspolo">U.S. Polo Assn.</option>
+              <option value="lufian">Lufian</option>
+              <option value="columbia">Columbia</option>
+              <option value="wrangler">Wrangler</option>
+              <option value="loft">Loft</option>
+              <option value="defacto">DeFacto</option>
+              <option value="diger">Diğer</option>
+            </select>
           </div>
         </div>
-      </div>
 
-      <!-- Ürün Bilgileri -->
-      <div class="form-row">
-        <div class="form-field">
-          <label>Ürün Adı *</label>
-          <input type="text" id="f-name" placeholder="Slim Fit Jean"/>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Marka Görüntü Adı *</label>
+            <input type="text" id="f-marka-label" placeholder="Calvin Klein (görüntülenen ad)" />
+          </div>
+          <div class="form-field">
+            <label>Cinsiyet *</label>
+            <select id="f-cinsiyet">
+              <option value="">Seçin...</option>
+              <option value="erkek">Erkek</option>
+              <option value="kadin">Kadın</option>
+            </select>
+          </div>
         </div>
-        <div class="form-field">
-          <label>Marka *</label>
-          <select id="f-marka">
-            <option value="">Seçin...</option>
-            <option value="calvin-klein">Calvin Klein</option>
-            <option value="mavi">Mavi</option>
-            <option value="tommy">Tommy Hilfiger</option>
-            <option value="diesel">Diesel</option>
-            <option value="uspolo">U.S. Polo Assn.</option>
-            <option value="lufian">Lufian</option>
-            <option value="columbia">Columbia</option>
-            <option value="wrangler">Wrangler</option>
-            <option value="loft">Loft</option>
-            <option value="defacto">DeFacto</option>
-            <option value="diger">Diğer</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="form-field">
-          <label>Marka Görüntü Adı *</label>
-          <input type="text" id="f-marka-label" placeholder="Calvin Klein (görüntülenen ad)"/>
+        <div class="form-row-3">
+          <div class="form-field">
+            <label>Kategori *</label>
+            <select id="f-kategori">
+              <option value="">Seçin...</option>
+              <option value="tshirt">T-Shirt & Polo</option>
+              <option value="gomlek">Gömlek</option>
+              <option value="pantolon">Pantolon & Jean</option>
+              <option value="sweatshirt">Sweatshirt & Hoodie</option>
+              <option value="dis">Dış Giyim</option>
+              <option value="elbise">Elbise & Etek</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Etiket</label>
+            <select id="f-tip">
+              <option value="yeni">Yeni Sezon</option>
+              <option value="outlet">Outlet</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Fiyat Metni</label>
+            <input type="text" id="f-fiyat" placeholder="Fiyat İçin Yazın" value="Fiyat İçin Yazın" />
+          </div>
         </div>
-        <div class="form-field">
-          <label>Cinsiyet *</label>
-          <select id="f-cinsiyet">
-            <option value="">Seçin...</option>
-            <option value="erkek">Erkek</option>
-            <option value="kadin">Kadın</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="form-row-3">
         <div class="form-field">
-          <label>Kategori *</label>
-          <select id="f-kategori">
-            <option value="">Seçin...</option>
-            <option value="tshirt">T-Shirt & Polo</option>
-            <option value="gomlek">Gömlek</option>
-            <option value="pantolon">Pantolon & Jean</option>
-            <option value="sweatshirt">Sweatshirt & Hoodie</option>
-            <option value="dis">Dış Giyim</option>
-            <option value="elbise">Elbise & Etek</option>
-          </select>
+          <label>WhatsApp Mesajı (otomatik oluşturulur)</label>
+          <input type="text" id="f-wa-msg" placeholder="Ürün adı yazınca otomatik dolar…" readonly
+            style="opacity:0.6;cursor:not-allowed;" />
         </div>
-        <div class="form-field">
-          <label>Etiket</label>
-          <select id="f-tip">
-            <option value="yeni">Yeni Sezon</option>
-            <option value="outlet">Outlet</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Fiyat Metni</label>
-          <input type="text" id="f-fiyat" placeholder="Fiyat İçin Yazın" value="Fiyat İçin Yazın"/>
-        </div>
-      </div>
 
-      <div class="form-field">
-        <label>WhatsApp Mesajı (otomatik oluşturulur)</label>
-        <input type="text" id="f-wa-msg" placeholder="Ürün adı yazınca otomatik dolar…" readonly style="opacity:0.6;cursor:not-allowed;"/>
-      </div>
-
-      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px;">
-        <button class="btn btn-outline btn-sm" id="modal-cancel">İptal</button>
-        <button class="btn btn-primary" id="modal-save">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13"/><polyline points="7 3 7 8 15 8"/></svg>
-          Kaydet
-        </button>
+        <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px;">
+          <button class="btn btn-outline btn-sm" id="modal-cancel">İptal</button>
+          <button class="btn btn-primary" id="modal-save">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
+              <polyline points="17 21 17 13 7 13" />
+              <polyline points="7 3 7 8 15 8" />
+            </svg>
+            Kaydet
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Onay Dialogu -->
-<div class="confirm-overlay" id="confirm-overlay">
-  <div class="confirm-box">
-    <div class="confirm-icon">🗑️</div>
-    <div class="confirm-title">Ürünü Sil</div>
-    <div class="confirm-msg" id="confirm-msg">Bu ürünü silmek istediğinize emin misiniz?</div>
-    <div class="confirm-actions">
-      <button class="btn btn-outline btn-sm" id="confirm-cancel">İptal</button>
-      <button class="btn btn-danger btn-sm" id="confirm-ok">Evet, Sil</button>
+  <!-- Onay Dialogu -->
+  <div class="confirm-overlay" id="confirm-overlay">
+    <div class="confirm-box">
+      <div class="confirm-icon">🗑️</div>
+      <div class="confirm-title">Ürünü Sil</div>
+      <div class="confirm-msg" id="confirm-msg">Bu ürünü silmek istediğinize emin misiniz?</div>
+      <div class="confirm-actions">
+        <button class="btn btn-outline btn-sm" id="confirm-cancel">İptal</button>
+        <button class="btn btn-danger btn-sm" id="confirm-ok">Evet, Sil</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Toast Container -->
-<div class="toast-container" id="toast-container"></div>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
 
-<script>
-/* =============================================
-   EMRE OUTLET — Admin Panel JS (Firebase)
-   ============================================= */
+  <script>
+    /* =============================================
+       EMRE OUTLET — Admin Panel JS (Firebase)
+       ============================================= */
 
-// ─────────────────────────────────────────────
-// 🔐 KİMLİK BİLGİLERİ
-// ─────────────────────────────────────────────
-const CREDENTIALS = {
-  username: 'admin',
-  password: 'emre2025'
-};
-const SESSION_KEY = 'eo_admin_session';
+    // ─────────────────────────────────────────────
+    // 🔐 KİMLİK BİLGİLERİ
+    // ─────────────────────────────────────────────
+    const CREDENTIALS = {
+      username: 'admin',
+      password: '2025emre2025'
+    };
+    const SESSION_KEY = 'eo_admin_session';
 
-// ── Toast ──────────────────────────────────────
-function toast(msg, type = 'success') {
-  const tc = document.getElementById('toast-container');
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.innerHTML = (type === 'success' ? '✅ ' : '❌ ') + msg;
-  tc.appendChild(t);
-  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(20px)'; t.style.transition='all 0.3s'; setTimeout(()=>t.remove(),300); }, 3000);
-}
+    // ── Toast ──────────────────────────────────────
+    function toast(msg, type = 'success') {
+      const tc = document.getElementById('toast-container');
+      const t = document.createElement('div');
+      t.className = 'toast ' + type;
+      t.innerHTML = (type === 'success' ? '✅ ' : '❌ ') + msg;
+      tc.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(20px)'; t.style.transition = 'all 0.3s'; setTimeout(() => t.remove(), 300); }, 3000);
+    }
 
-// ── Onay Dialogu ───────────────────────────────
-let confirmCallback = null;
-function showConfirm(msg, cb) {
-  document.getElementById('confirm-msg').textContent = msg;
-  document.getElementById('confirm-overlay').classList.add('open');
-  confirmCallback = cb;
-}
-document.getElementById('confirm-cancel').onclick = () => document.getElementById('confirm-overlay').classList.remove('open');
-document.getElementById('confirm-ok').onclick = () => {
-  document.getElementById('confirm-overlay').classList.remove('open');
-  if (confirmCallback) confirmCallback();
-};
+    // ── Onay Dialogu ───────────────────────────────
+    let confirmCallback = null;
+    function showConfirm(msg, cb) {
+      document.getElementById('confirm-msg').textContent = msg;
+      document.getElementById('confirm-overlay').classList.add('open');
+      confirmCallback = cb;
+    }
+    document.getElementById('confirm-cancel').onclick = () => document.getElementById('confirm-overlay').classList.remove('open');
+    document.getElementById('confirm-ok').onclick = () => {
+      document.getElementById('confirm-overlay').classList.remove('open');
+      if (confirmCallback) confirmCallback();
+    };
 
-// ─────────────────────────────────────────────
-// 🔐 LOGIN
-// ─────────────────────────────────────────────
-function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === 'true'; }
+    // ─────────────────────────────────────────────
+    // 🔐 LOGIN
+    // ─────────────────────────────────────────────
+    function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === 'true'; }
 
-document.getElementById('login-btn').onclick = doLogin;
-document.getElementById('input-password').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-document.getElementById('input-username').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('input-password').focus(); });
+    document.getElementById('login-btn').onclick = doLogin;
+    document.getElementById('input-password').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+    document.getElementById('input-username').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('input-password').focus(); });
 
-function doLogin() {
-  const u = document.getElementById('input-username').value.trim();
-  const p = document.getElementById('input-password').value;
-  const savedPass = localStorage.getItem('eo_custom_pass') || CREDENTIALS.password;
-  const savedUser = localStorage.getItem('eo_custom_user') || CREDENTIALS.username;
-  if (u === savedUser && p === savedPass) {
-    sessionStorage.setItem(SESSION_KEY, 'true');
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-panel').style.display = 'flex';
-    refreshAll();
-  } else {
-    const err = document.getElementById('login-error');
-    err.style.display = 'block';
-    document.getElementById('input-password').value = '';
-    setTimeout(() => err.style.display = 'none', 3000);
-  }
-}
-document.getElementById('logout-btn').onclick = () => {
-  sessionStorage.removeItem(SESSION_KEY);
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('input-username').value = '';
-  document.getElementById('input-password').value = '';
-};
+    function doLogin() {
+      const u = document.getElementById('input-username').value.trim();
+      const p = document.getElementById('input-password').value;
+      const savedPass = localStorage.getItem('eo_custom_pass') || CREDENTIALS.password;
+      const savedUser = localStorage.getItem('eo_custom_user') || CREDENTIALS.username;
+      if (u === savedUser && p === savedPass) {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'flex';
+        refreshAll();
+      } else {
+        const err = document.getElementById('login-error');
+        err.style.display = 'block';
+        document.getElementById('input-password').value = '';
+        setTimeout(() => err.style.display = 'none', 3000);
+      }
+    }
+    document.getElementById('logout-btn').onclick = () => {
+      sessionStorage.removeItem(SESSION_KEY);
+      document.getElementById('admin-panel').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('input-username').value = '';
+      document.getElementById('input-password').value = '';
+    };
 
-// ─────────────────────────────────────────────
-// 🧭 NAVİGASYON
-// ─────────────────────────────────────────────
-document.querySelectorAll('.nav-item[data-section]').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
-    item.classList.add('active');
-    document.getElementById('section-' + item.dataset.section).classList.add('active');
-    if (item.dataset.section === 'urunler') renderProductTable();
-    if (item.dataset.section === 'dashboard') renderDashboard();
-  });
-});
+    // ─────────────────────────────────────────────
+    // 🧭 NAVİGASYON
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.nav-item[data-section]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+        item.classList.add('active');
+        document.getElementById('section-' + item.dataset.section).classList.add('active');
+        if (item.dataset.section === 'urunler') renderProductTable();
+        if (item.dataset.section === 'dashboard') renderDashboard();
+      });
+    });
 
-// ─────────────────────────────────────────────
-// 📊 DASHBOARD
-// ─────────────────────────────────────────────
-async function renderDashboard() {
-  const products = await eoGetProducts();
-  document.getElementById('stat-toplam').textContent = products.length;
-  document.getElementById('stat-erkek').textContent = products.filter(p => p.cinsiyet === 'erkek').length;
-  document.getElementById('stat-kadin').textContent = products.filter(p => p.cinsiyet === 'kadin').length;
-  const recent = products.slice(-6).reverse();
-  const wrap = document.getElementById('dashboard-recent');
-  if (recent.length === 0) {
-    wrap.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📦</div><h3>Henüz ürün yok</h3><p>İlk ürününüzü ekleyerek başlayın.</p></div>';
-    return;
-  }
-  wrap.innerHTML = renderTable(recent, true);
-}
-document.getElementById('dashboard-add-btn').onclick = () => openModal();
+    // ─────────────────────────────────────────────
+    // 📊 DASHBOARD
+    // ─────────────────────────────────────────────
+    async function renderDashboard() {
+      const products = await eoGetProducts();
+      document.getElementById('stat-toplam').textContent = products.length;
+      document.getElementById('stat-erkek').textContent = products.filter(p => p.cinsiyet === 'erkek').length;
+      document.getElementById('stat-kadin').textContent = products.filter(p => p.cinsiyet === 'kadin').length;
+      const recent = products.slice(-6).reverse();
+      const wrap = document.getElementById('dashboard-recent');
+      if (recent.length === 0) {
+        wrap.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📦</div><h3>Henüz ürün yok</h3><p>İlk ürününüzü ekleyerek başlayın.</p></div>';
+        return;
+      }
+      wrap.innerHTML = renderTable(recent, true);
+    }
+    document.getElementById('dashboard-add-btn').onclick = () => openModal();
 
-// ─────────────────────────────────────────────
-// 📋 ÜRÜN TABLOSU
-// ─────────────────────────────────────────────
-const KATEGORI_LABELS = { tshirt:'T-Shirt & Polo', gomlek:'Gömlek', pantolon:'Pantolon & Jean', sweatshirt:'Sweatshirt', dis:'Dış Giyim', elbise:'Elbise & Etek' };
+    // ─────────────────────────────────────────────
+    // 📋 ÜRÜN TABLOSU
+    // ─────────────────────────────────────────────
+    const KATEGORI_LABELS = { tshirt: 'T-Shirt & Polo', gomlek: 'Gömlek', pantolon: 'Pantolon & Jean', sweatshirt: 'Sweatshirt', dis: 'Dış Giyim', elbise: 'Elbise & Etek' };
 
-function renderTable(products, mini = false) {
-  if (products.length === 0) return '<div class="empty-state"><div class="empty-state-icon">📦</div><h3>Ürün bulunamadı</h3><p>Yeni ürün eklemek için butona tıklayın.</p></div>';
-  return `<div class="product-table-wrap"><table class="product-table">
+    function renderTable(products, mini = false) {
+      if (products.length === 0) return '<div class="empty-state"><div class="empty-state-icon">📦</div><h3>Ürün bulunamadı</h3><p>Yeni ürün eklemek için butona tıklayın.</p></div>';
+      return `<div class="product-table-wrap"><table class="product-table">
     <thead><tr>
       <th>Görsel</th><th>Ürün Adı</th><th>Marka</th><th>Cinsiyet</th><th>Kategori</th><th>Etiket</th><th>İşlemler</th>
     </tr></thead>
@@ -419,266 +466,266 @@ function renderTable(products, mini = false) {
       ${products.map(p => `
         <tr>
           <td>${p.img ? `<img src="${p.img}" class="product-table-img" alt="${p.name}"/>` : `<div class="product-table-img-placeholder">🖼️</div>`}</td>
-          <td><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--text-muted)">${p.fiyat||''}</span></td>
-          <td>${p.markaLabel||p.marka}</td>
-          <td><span class="badge badge-${p.cinsiyet}">${p.cinsiyet==='erkek'?'Erkek':'Kadın'}</span></td>
-          <td>${KATEGORI_LABELS[p.kategori]||p.kategori}</td>
-          <td><span class="badge ${p.tip==='yeni'?'badge-gold':'badge-red'}">${p.tip==='yeni'?'Yeni':'Outlet'}</span></td>
+          <td><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--text-muted)">${p.fiyat || ''}</span></td>
+          <td>${p.markaLabel || p.marka}</td>
+          <td><span class="badge badge-${p.cinsiyet}">${p.cinsiyet === 'erkek' ? 'Erkek' : 'Kadın'}</span></td>
+          <td>${KATEGORI_LABELS[p.kategori] || p.kategori}</td>
+          <td><span class="badge ${p.tip === 'yeni' ? 'badge-gold' : 'badge-red'}">${p.tip === 'yeni' ? 'Yeni' : 'Outlet'}</span></td>
           <td><div class="table-actions">
             <button class="btn btn-success btn-sm" onclick="openModal('${p.firestoreId}')">✏️ Düzenle</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.firestoreId}','${p.name.replace(/'/g,String.fromCharCode(92,39))}')">🗑️ Sil</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.firestoreId}','${p.name.replace(/'/g, String.fromCharCode(92, 39))}')">🗑️ Sil</button>
           </div></td>
         </tr>`).join('')}
     </tbody>
   </table></div>`;
-}
-
-async function renderProductTable() {
-  const wrap = document.getElementById('products-table-wrap');
-  wrap.innerHTML = '<div style="padding:40px;text-align:center;color:var(--gold)">⏳ Yükleniyor...</div>';
-  const products = await eoGetProducts();
-  wrap.innerHTML = renderTable(products);
-}
-document.getElementById('urunler-add-btn').onclick = () => openModal();
-
-function deleteProduct(firestoreId, name) {
-  showConfirm(`"${name}" ürününü silmek istiyor musunuz? Bu işlem geri alınamaz.`, async () => {
-    try {
-      await eoDeleteProduct(firestoreId);
-      renderProductTable();
-      renderDashboard();
-      toast('Ürün silindi.');
-    } catch(e) { toast('Silme hatası: '+e.message,'error'); }
-  });
-}
-
-// ─────────────────────────────────────────────
-// ➕ MODAL (EKLE / DÜZENLE)
-// ─────────────────────────────────────────────
-let editFirestoreId = null;
-let currentImgData  = null;
-
-async function openModal(firestoreId = null) {
-  editFirestoreId = firestoreId;
-  currentImgData  = null;
-  resetForm();
-  document.getElementById('modal-title').innerHTML = firestoreId ? 'Ürünü <span>Düzenle</span>' : 'Yeni <span>Ürün</span>';
-  document.getElementById('upload-placeholder').style.display = 'block';
-  document.getElementById('upload-preview-wrap').style.display = 'none';
-  if (firestoreId !== null) {
-    const products = await eoGetProducts();
-    const p = products.find(x => x.firestoreId === firestoreId);
-    if (p) {
-      document.getElementById('f-name').value        = p.name || '';
-      document.getElementById('f-marka').value       = p.marka || '';
-      document.getElementById('f-marka-label').value = p.markaLabel || '';
-      document.getElementById('f-cinsiyet').value    = p.cinsiyet || '';
-      document.getElementById('f-kategori').value    = p.kategori || '';
-      document.getElementById('f-tip').value         = p.tip || 'yeni';
-      document.getElementById('f-fiyat').value       = p.fiyat || 'Fiyat İçin Yazın';
-      document.getElementById('f-wa-msg').value      = p.waMsg || '';
-      if (p.img) {
-        currentImgData = p.img;
-        document.getElementById('img-preview').src = p.img;
-        document.getElementById('upload-placeholder').style.display = 'none';
-        document.getElementById('upload-preview-wrap').style.display = 'block';
-        document.getElementById('img-meta').textContent = 'Mevcut görsel (WebP)';
-      }
     }
-  }
-  document.getElementById('product-modal').classList.add('open');
-}
 
-function resetForm() {
-  ['f-name','f-marka','f-marka-label','f-cinsiyet','f-kategori','f-fiyat','f-wa-msg'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el.tagName === 'SELECT') el.selectedIndex = 0;
-    else el.value = id === 'f-fiyat' ? 'Fiyat İçin Yazın' : '';
-  });
-  document.getElementById('f-tip').value = 'yeni';
-  document.getElementById('img-input').value = '';
-}
-
-function closeModal() { document.getElementById('product-modal').classList.remove('open'); }
-document.getElementById('modal-close').onclick = closeModal;
-document.getElementById('modal-cancel').onclick = closeModal;
-document.getElementById('product-modal').addEventListener('click', e => { if (e.target === document.getElementById('product-modal')) closeModal(); });
-
-document.getElementById('f-name').addEventListener('input', () => {
-  const name = document.getElementById('f-name').value.trim();
-  document.getElementById('f-wa-msg').value = name ? `Merhaba, ${name} hakkında bilgi almak istiyorum.` : '';
-});
-
-// ─────────────────────────────────────────────
-// 🖼️ GÖRSEL YÜKLEME + WebP DÖNÜŞÜMÜ
-// ─────────────────────────────────────────────
-const imgInput   = document.getElementById('img-input');
-const uploadArea = document.getElementById('upload-area');
-uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
-uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
-uploadArea.addEventListener('drop', e => { e.preventDefault(); uploadArea.classList.remove('drag-over'); if (e.dataTransfer.files[0]) processImage(e.dataTransfer.files[0]); });
-imgInput.addEventListener('change', e => { if (e.target.files[0]) processImage(e.target.files[0]); });
-
-function processImage(file) {
-  if (!file.type.startsWith('image/')) { toast('Lütfen bir görsel dosyası seçin.', 'error'); return; }
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    const img = new Image();
-    img.onload = function() {
-      const canvas = document.createElement('canvas');
-      const MAX = 900;
-      let w = img.width, h = img.height;
-      if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
-      canvas.width = w; canvas.height = h;
-      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      const webpData = canvas.toDataURL('image/webp', 0.82);
-      currentImgData = webpData;
-      document.getElementById('img-preview').src = webpData;
-      document.getElementById('upload-placeholder').style.display = 'none';
-      document.getElementById('upload-preview-wrap').style.display = 'block';
-      const kb = Math.round(webpData.length * 0.75 / 1024);
-      document.getElementById('img-meta').textContent = `WebP • ${w}×${h}px • ~${kb}KB`;
-    };
-    img.src = ev.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-document.getElementById('img-remove').onclick = (e) => {
-  e.stopPropagation();
-  currentImgData = null;
-  imgInput.value = '';
-  document.getElementById('upload-placeholder').style.display = 'block';
-  document.getElementById('upload-preview-wrap').style.display = 'none';
-};
-
-// ─────────────────────────────────────────────
-// 💾 KAYDET
-// ─────────────────────────────────────────────
-document.getElementById('modal-save').onclick = saveProduct;
-
-async function saveProduct() {
-  const name       = document.getElementById('f-name').value.trim();
-  const marka      = document.getElementById('f-marka').value;
-  const markaLabel = document.getElementById('f-marka-label').value.trim();
-  const cinsiyet   = document.getElementById('f-cinsiyet').value;
-  const kategori   = document.getElementById('f-kategori').value;
-  const tip        = document.getElementById('f-tip').value;
-  const fiyat      = document.getElementById('f-fiyat').value.trim();
-  const waMsg      = document.getElementById('f-wa-msg').value.trim();
-
-  if (!name || !cinsiyet || !kategori || !marka) {
-    toast('Lütfen zorunlu alanları doldurun (ürün adı, marka, cinsiyet, kategori).', 'error');
-    return;
-  }
-
-  const btn = document.getElementById('modal-save');
-  btn.disabled = true;
-  btn.textContent = 'Kaydediliyor...';
-
-  try {
-    let productData = { name, marka, markaLabel: markaLabel||name, cinsiyet, kategori, tip, fiyat, waMsg };
-    if (editFirestoreId) {
-      productData.firestoreId = editFirestoreId;
-      if (!currentImgData) {
-        const prods = await eoGetProducts();
-        const existing = prods.find(p => p.firestoreId === editFirestoreId);
-        if (existing && existing.img) productData.img = existing.img;
-      } else {
-        productData.img = currentImgData;
-      }
-      await eoSaveProduct(productData);
-      toast('Ürün güncellendi! ✨');
-    } else {
-      if (currentImgData) productData.img = currentImgData;
-      await eoSaveProduct(productData);
-      toast('Yeni ürün eklendi! 🎉');
-    }
-    closeModal();
-    renderProductTable();
-    renderDashboard();
-  } catch(e) {
-    toast('Kaydetme hatası: '+e.message,'error');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13"/><polyline points="7 3 7 8 15 8"/></svg> Kaydet`;
-  }
-}
-
-// ─────────────────────────────────────────────
-// ⚙️ AYARLAR
-// ─────────────────────────────────────────────
-document.getElementById('change-pass-btn').onclick = () => {
-  const cur = document.getElementById('cur-pass').value;
-  const n1  = document.getElementById('new-pass').value;
-  const n2  = document.getElementById('new-pass2').value;
-  const savedPass = localStorage.getItem('eo_custom_pass') || CREDENTIALS.password;
-  if (cur !== savedPass)  { toast('Mevcut şifre hatalı.','error'); return; }
-  if (n1.length < 6)      { toast('Yeni şifre en az 6 karakter olmalı.','error'); return; }
-  if (n1 !== n2)          { toast('Yeni şifreler eşleşmiyor.','error'); return; }
-  localStorage.setItem('eo_custom_pass', n1);
-  ['cur-pass','new-pass','new-pass2'].forEach(id => document.getElementById(id).value = '');
-  toast('Şifre başarıyla güncellendi!');
-};
-
-// Dışa Aktar
-document.getElementById('export-btn').onclick = async () => {
-  const products = await eoGetProducts();
-  const data = JSON.stringify(products, null, 2);
-  const blob = new Blob([data], { type:'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'emre-outlet-urunler-' + new Date().toISOString().slice(0,10) + '.json';
-  a.click();
-  toast('Ürünler dışa aktarıldı.');
-};
-
-// İçe Aktar
-document.getElementById('import-input').onchange = function() {
-  const file = this.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = async e => {
-    try {
-      const imported = JSON.parse(e.target.result);
-      if (!Array.isArray(imported)) throw new Error();
-      showConfirm(`${imported.length} ürün Firestore'a eklenecek. Devam?`, async () => {
-        try {
-          for (const p of imported) { const {firestoreId,...data}=p; await eoSaveProduct(data); }
-          renderProductTable(); renderDashboard();
-          toast(`${imported.length} ürün içe aktarıldı!`);
-        } catch(err) { toast('İçe aktarma hatası: '+err.message,'error'); }
-      });
-    } catch { toast('Geçersiz JSON dosyası.','error'); }
-  };
-  reader.readAsText(file);
-};
-
-// Temizle
-document.getElementById('clear-btn').onclick = () => {
-  showConfirm("Tüm ürünler Firestore'dan silinecek. Bu işlem geri alınamaz!", async () => {
-    try {
+    async function renderProductTable() {
+      const wrap = document.getElementById('products-table-wrap');
+      wrap.innerHTML = '<div style="padding:40px;text-align:center;color:var(--gold)">⏳ Yükleniyor...</div>';
       const products = await eoGetProducts();
-      for (const p of products) await eoDeleteProduct(p.firestoreId);
-      renderProductTable(); renderDashboard();
-      toast('Tüm ürünler silindi.');
-    } catch(e) { toast('Hata: '+e.message,'error'); }
-  });
-};
+      wrap.innerHTML = renderTable(products);
+    }
+    document.getElementById('urunler-add-btn').onclick = () => openModal();
 
-// ─────────────────────────────────────────────
-// 🚀 BAŞLAT
-// ─────────────────────────────────────────────
-async function refreshAll() {
-  await eoInitProducts();
-  renderDashboard();
-}
+    function deleteProduct(firestoreId, name) {
+      showConfirm(`"${name}" ürününü silmek istiyor musunuz? Bu işlem geri alınamaz.`, async () => {
+        try {
+          await eoDeleteProduct(firestoreId);
+          renderProductTable();
+          renderDashboard();
+          toast('Ürün silindi.');
+        } catch (e) { toast('Silme hatası: ' + e.message, 'error'); }
+      });
+    }
 
-if (isLoggedIn()) {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('admin-panel').style.display = 'flex';
-  refreshAll();
-}
-</script>
+    // ─────────────────────────────────────────────
+    // ➕ MODAL (EKLE / DÜZENLE)
+    // ─────────────────────────────────────────────
+    let editFirestoreId = null;
+    let currentImgData = null;
+
+    async function openModal(firestoreId = null) {
+      editFirestoreId = firestoreId;
+      currentImgData = null;
+      resetForm();
+      document.getElementById('modal-title').innerHTML = firestoreId ? 'Ürünü <span>Düzenle</span>' : 'Yeni <span>Ürün</span>';
+      document.getElementById('upload-placeholder').style.display = 'block';
+      document.getElementById('upload-preview-wrap').style.display = 'none';
+      if (firestoreId !== null) {
+        const products = await eoGetProducts();
+        const p = products.find(x => x.firestoreId === firestoreId);
+        if (p) {
+          document.getElementById('f-name').value = p.name || '';
+          document.getElementById('f-marka').value = p.marka || '';
+          document.getElementById('f-marka-label').value = p.markaLabel || '';
+          document.getElementById('f-cinsiyet').value = p.cinsiyet || '';
+          document.getElementById('f-kategori').value = p.kategori || '';
+          document.getElementById('f-tip').value = p.tip || 'yeni';
+          document.getElementById('f-fiyat').value = p.fiyat || 'Fiyat İçin Yazın';
+          document.getElementById('f-wa-msg').value = p.waMsg || '';
+          if (p.img) {
+            currentImgData = p.img;
+            document.getElementById('img-preview').src = p.img;
+            document.getElementById('upload-placeholder').style.display = 'none';
+            document.getElementById('upload-preview-wrap').style.display = 'block';
+            document.getElementById('img-meta').textContent = 'Mevcut görsel (WebP)';
+          }
+        }
+      }
+      document.getElementById('product-modal').classList.add('open');
+    }
+
+    function resetForm() {
+      ['f-name', 'f-marka', 'f-marka-label', 'f-cinsiyet', 'f-kategori', 'f-fiyat', 'f-wa-msg'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el.tagName === 'SELECT') el.selectedIndex = 0;
+        else el.value = id === 'f-fiyat' ? 'Fiyat İçin Yazın' : '';
+      });
+      document.getElementById('f-tip').value = 'yeni';
+      document.getElementById('img-input').value = '';
+    }
+
+    function closeModal() { document.getElementById('product-modal').classList.remove('open'); }
+    document.getElementById('modal-close').onclick = closeModal;
+    document.getElementById('modal-cancel').onclick = closeModal;
+    document.getElementById('product-modal').addEventListener('click', e => { if (e.target === document.getElementById('product-modal')) closeModal(); });
+
+    document.getElementById('f-name').addEventListener('input', () => {
+      const name = document.getElementById('f-name').value.trim();
+      document.getElementById('f-wa-msg').value = name ? `Merhaba, ${name} hakkında bilgi almak istiyorum.` : '';
+    });
+
+    // ─────────────────────────────────────────────
+    // 🖼️ GÖRSEL YÜKLEME + WebP DÖNÜŞÜMÜ
+    // ─────────────────────────────────────────────
+    const imgInput = document.getElementById('img-input');
+    const uploadArea = document.getElementById('upload-area');
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => { e.preventDefault(); uploadArea.classList.remove('drag-over'); if (e.dataTransfer.files[0]) processImage(e.dataTransfer.files[0]); });
+    imgInput.addEventListener('change', e => { if (e.target.files[0]) processImage(e.target.files[0]); });
+
+    function processImage(file) {
+      if (!file.type.startsWith('image/')) { toast('Lütfen bir görsel dosyası seçin.', 'error'); return; }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement('canvas');
+          const MAX = 900;
+          let w = img.width, h = img.height;
+          if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          const webpData = canvas.toDataURL('image/webp', 0.82);
+          currentImgData = webpData;
+          document.getElementById('img-preview').src = webpData;
+          document.getElementById('upload-placeholder').style.display = 'none';
+          document.getElementById('upload-preview-wrap').style.display = 'block';
+          const kb = Math.round(webpData.length * 0.75 / 1024);
+          document.getElementById('img-meta').textContent = `WebP • ${w}×${h}px • ~${kb}KB`;
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    document.getElementById('img-remove').onclick = (e) => {
+      e.stopPropagation();
+      currentImgData = null;
+      imgInput.value = '';
+      document.getElementById('upload-placeholder').style.display = 'block';
+      document.getElementById('upload-preview-wrap').style.display = 'none';
+    };
+
+    // ─────────────────────────────────────────────
+    // 💾 KAYDET
+    // ─────────────────────────────────────────────
+    document.getElementById('modal-save').onclick = saveProduct;
+
+    async function saveProduct() {
+      const name = document.getElementById('f-name').value.trim();
+      const marka = document.getElementById('f-marka').value;
+      const markaLabel = document.getElementById('f-marka-label').value.trim();
+      const cinsiyet = document.getElementById('f-cinsiyet').value;
+      const kategori = document.getElementById('f-kategori').value;
+      const tip = document.getElementById('f-tip').value;
+      const fiyat = document.getElementById('f-fiyat').value.trim();
+      const waMsg = document.getElementById('f-wa-msg').value.trim();
+
+      if (!name || !cinsiyet || !kategori || !marka) {
+        toast('Lütfen zorunlu alanları doldurun (ürün adı, marka, cinsiyet, kategori).', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('modal-save');
+      btn.disabled = true;
+      btn.textContent = 'Kaydediliyor...';
+
+      try {
+        let productData = { name, marka, markaLabel: markaLabel || name, cinsiyet, kategori, tip, fiyat, waMsg };
+        if (editFirestoreId) {
+          productData.firestoreId = editFirestoreId;
+          if (!currentImgData) {
+            const prods = await eoGetProducts();
+            const existing = prods.find(p => p.firestoreId === editFirestoreId);
+            if (existing && existing.img) productData.img = existing.img;
+          } else {
+            productData.img = currentImgData;
+          }
+          await eoSaveProduct(productData);
+          toast('Ürün güncellendi! ✨');
+        } else {
+          if (currentImgData) productData.img = currentImgData;
+          await eoSaveProduct(productData);
+          toast('Yeni ürün eklendi! 🎉');
+        }
+        closeModal();
+        renderProductTable();
+        renderDashboard();
+      } catch (e) {
+        toast('Kaydetme hatası: ' + e.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13"/><polyline points="7 3 7 8 15 8"/></svg> Kaydet`;
+      }
+    }
+
+    // ─────────────────────────────────────────────
+    // ⚙️ AYARLAR
+    // ─────────────────────────────────────────────
+    document.getElementById('change-pass-btn').onclick = () => {
+      const cur = document.getElementById('cur-pass').value;
+      const n1 = document.getElementById('new-pass').value;
+      const n2 = document.getElementById('new-pass2').value;
+      const savedPass = localStorage.getItem('eo_custom_pass') || CREDENTIALS.password;
+      if (cur !== savedPass) { toast('Mevcut şifre hatalı.', 'error'); return; }
+      if (n1.length < 6) { toast('Yeni şifre en az 6 karakter olmalı.', 'error'); return; }
+      if (n1 !== n2) { toast('Yeni şifreler eşleşmiyor.', 'error'); return; }
+      localStorage.setItem('eo_custom_pass', n1);
+      ['cur-pass', 'new-pass', 'new-pass2'].forEach(id => document.getElementById(id).value = '');
+      toast('Şifre başarıyla güncellendi!');
+    };
+
+    // Dışa Aktar
+    document.getElementById('export-btn').onclick = async () => {
+      const products = await eoGetProducts();
+      const data = JSON.stringify(products, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'emre-outlet-urunler-' + new Date().toISOString().slice(0, 10) + '.json';
+      a.click();
+      toast('Ürünler dışa aktarıldı.');
+    };
+
+    // İçe Aktar
+    document.getElementById('import-input').onchange = function () {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async e => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!Array.isArray(imported)) throw new Error();
+          showConfirm(`${imported.length} ürün Firestore'a eklenecek. Devam?`, async () => {
+            try {
+              for (const p of imported) { const { firestoreId, ...data } = p; await eoSaveProduct(data); }
+              renderProductTable(); renderDashboard();
+              toast(`${imported.length} ürün içe aktarıldı!`);
+            } catch (err) { toast('İçe aktarma hatası: ' + err.message, 'error'); }
+          });
+        } catch { toast('Geçersiz JSON dosyası.', 'error'); }
+      };
+      reader.readAsText(file);
+    };
+
+    // Temizle
+    document.getElementById('clear-btn').onclick = () => {
+      showConfirm("Tüm ürünler Firestore'dan silinecek. Bu işlem geri alınamaz!", async () => {
+        try {
+          const products = await eoGetProducts();
+          for (const p of products) await eoDeleteProduct(p.firestoreId);
+          renderProductTable(); renderDashboard();
+          toast('Tüm ürünler silindi.');
+        } catch (e) { toast('Hata: ' + e.message, 'error'); }
+      });
+    };
+
+    // ─────────────────────────────────────────────
+    // 🚀 BAŞLAT
+    // ─────────────────────────────────────────────
+    async function refreshAll() {
+      await eoInitProducts();
+      renderDashboard();
+    }
+
+    if (isLoggedIn()) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'flex';
+      refreshAll();
+    }
+  </script>
 </body>
-</html>
 
+</html>
