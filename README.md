@@ -3,6 +3,7 @@
 > **"En Ünlü Markalar Outlet Fiyatına"**
 
 🌐 **[Canlı Demo → emre-outlet.netlify.app](https://emreoutlet.netlify.app)**
+🎥 **[Tanıtım Videosu (YouTube) → youtu.be/oFSFa4JpB2I](https://youtu.be/oFSFa4JpB2I)**
 
 Osmaniye'de 2 şubesiyle faaliyet gösteren Emre Outlet için geliştirilmiş profesyonel kurumsal web sitesi. Calvin Klein, Tommy Hilfiger, Mavi, Diesel ve daha fazlasını outlet fiyatıyla sunan çok markalı giyim mağazasının dijital platformu.
 
@@ -28,7 +29,7 @@ Osmaniye'de 2 şubesiyle faaliyet gösteren Emre Outlet için geliştirilmiş pr
 - 🔍 **Akıllı Filtreleme** — Cinsiyet, marka, kategori, yeni/outlet filtreleri
 - ✨ **Animasyonlar** — Scroll reveal, hover efektleri, parçacık animasyonları
 - 🔐 **Admin Paneli** — Ürün ekleme/düzenleme/silme, görsel yükleme (WebP dönüşümü)
-- 📦 **localStorage Tabanlı** — Backend gerekmez, statik hosting ile çalışır
+- ☁️ **Firebase Firestore** — Bulut tabanlı gerçek zamanlı veritabanı ile tüm cihazlarda senkronizasyon
 
 ---
 
@@ -36,7 +37,8 @@ Osmaniye'de 2 şubesiyle faaliyet gösteren Emre Outlet için geliştirilmiş pr
 
 - **HTML5** — Semantik yapı, SEO meta etiketleri
 - **CSS3** — CSS Variables, Grid, Flexbox, animasyonlar
-- **Vanilla JavaScript** — IntersectionObserver, Canvas API (WebP), localStorage
+- **Vanilla JavaScript** — IntersectionObserver, Canvas API (WebP), Async/Await
+- **Firebase Firestore** — Veri depolama ve gerçek zamanlı yönetim
 - **Google Fonts** — Cormorant Garamond, Montserrat, Lato
 
 ---
@@ -62,7 +64,7 @@ Varsayılan giriş bilgileri `admin.html` içindeki `CREDENTIALS` nesnesinden de
 ```javascript
 const CREDENTIALS = {
   username: 'admin',
-  password: 'emre2025'
+  password: '2025emre2025'
 };
 ```
 
@@ -90,8 +92,9 @@ emre-outlet/
 │   ├── pages.css        # Alt sayfa stilleri
 │   └── admin.css        # Admin panel stilleri
 ├── js/
-│   ├── main.js          # Global JS (navbar, animasyon, vb.)
-│   └── products-data.js # Ürün veri modülü (localStorage)
+│   ├── main.js             # Global JS (navbar, animasyon, vb.)
+│   ├── firebase-config.js  # Firebase bağlantı ve CRUD fonksiyonları
+│   └── products-data.js    # Ürün veri katmanı (Firestore entegrasyonu)
 └── images/
     ├── hero_bg.png
     ├── erkek_koleksiyon.png
